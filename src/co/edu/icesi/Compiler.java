@@ -1,0 +1,180 @@
+package co.edu.icesi;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+public class Compiler {
+
+    // CONSTANTS OR INSTRUCTIONS IN THIS CASE
+    public static final char INC_PTR = '>';
+    public static final char DEC_PTR = '<';
+    public static final char INC_VAL = '+';
+    public static final char DEC_VAL = '-';
+    public static final char BGN_LPP = '[';
+    public static final char END_LPP = ']';
+    public static final char IN_CHAR = ',';
+    public static final char OT_CHAR = '.';
+
+
+    // VARIABLES
+    private byte[] memoryBlocks;
+    private int memorySize;
+    private int memoryPointer;
+    private String fuckedUpCode;
+    private int codePointer;
+    private boolean running;
+    private BufferedReader br;
+    private BufferedWriter bw;
+
+    public Compiler(String fuckedUpCode) {
+        memorySize = 30000;
+        memoryBlocks = new byte[memorySize];
+        memoryPointer = 0;
+        this.fuckedUpCode = fuckedUpCode;
+        codePointer = 0;
+        running = checkBrackets();
+        br = new BufferedReader(new InputStreamReader(System.in));
+        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        compile();
+    }
+
+    public boolean checkBrackets() {
+        int n = 0;
+        for (Character c : fuckedUpCode.toCharArray()) {
+            if (c == BGN_LPP)
+                n++;
+            if (c == END_LPP)
+                n--;
+            if (n < 0)
+                return false;
+        }
+        return n == 0;
+    }
+
+    public void compile() {
+        System.out.println("Run started");
+        while (running && codePointer < fuckedUpCode.length()) {
+            codePointer = codePointer % memorySize;
+            read();
+        }
+        try {
+
+            bw.close();
+        } catch (Exception e) {
+
+        }
+        System.out.println("Run ended");
+    }
+
+    public void read() {
+
+        // Check if the code pointer is within the code
+        if (codePointer >= fuckedUpCode.length()) {
+            running = false;
+            return;
+        }
+
+        // Detect the instruction that's going to be processed
+        char inst = fuckedUpCode.charAt(codePointer);
+        switch (inst) {
+            case INC_PTR:
+                codePointer++;
+                memoryPointer++;
+                break;
+            case DEC_PTR:
+                codePointer++;
+                memoryPointer--;
+                break;
+            case INC_VAL:
+                codePointer++;
+                memoryBlocks[memoryPointer]++;
+                break;
+            case DEC_VAL:
+                codePointer++;
+                memoryBlocks[memoryPointer]--;
+                break;
+            case BGN_LPP:
+                codePointer++;
+                break;
+            case END_LPP:
+                if (memoryBlocks[memoryPointer] == 0) {
+                    codePointer++;
+                    break;
+                }
+                while (codePointer >= 0 && fuckedUpCode.charAt(codePointer) != BGN_LPP) {
+                    codePointer--;
+                }
+                if (codePointer == -1) {
+                    System.out.println("FAILED TO FIND LOOP START");
+                    running = false;
+                }
+                break;
+            case IN_CHAR:
+                try {
+                    byte ch = (byte) br.read();
+                    memoryBlocks[memoryPointer] = ch;
+                    codePointer++;
+                } catch (Exception e) {
+                    System.out.println("FAILED TO READ FROM INPUT");
+                    e.printStackTrace();
+                    running = false;
+                }
+                break;
+            case OT_CHAR:
+                try {
+                    int ch = (int) memoryBlocks[memoryPointer];
+                    bw.write((char) ch + "");
+                    codePointer++;
+                } catch (Exception e) {
+                    System.out.println("FAILED TO WRITE TO OUTPUT");
+                    e.printStackTrace();
+                    running = false;
+                }
+                break;
+            default:
+                codePointer++;
+                break;
+        }
+    }
+
+    public void loadCode(String fuckedUpCode) {
+        this.fuckedUpCode = fuckedUpCode;
+        codePointer = 0;
+    }
+
+    public void cleanMemory() {
+        memoryBlocks = new byte[memorySize];
+        memoryPointer = 0;
+    }
+
+    public void setMemorySize(int memorySize) {
+        this.memorySize = memorySize;
+    }
+
+    public byte[] getMemoryBlocks() {
+        return memoryBlocks;
+    }
+
+    public int getCodePointer() {
+        return codePointer;
+    }
+
+    public int getMemoryPointer() {
+        return memoryPointer;
+    }
+
+    public int getMemorySize() {
+        return memorySize;
+    }
+
+    public String getFuckedUpCode() {
+        return fuckedUpCode;
+    }
+
+    public void setMemoryBlocks(byte[] memoryBlocks) {
+        this.memoryBlocks = memoryBlocks;
+    }
+}
+
