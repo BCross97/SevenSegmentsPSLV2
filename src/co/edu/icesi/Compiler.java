@@ -59,7 +59,7 @@ public class Compiler {
         System.out.println("Run started");
         System.out.println("Now enter the input for your code");
         while (running && codePointer < fuckedUpCode.length()) {
-            codePointer = codePointer % memorySize;
+            memoryPointer = memoryPointer % memorySize;
             read();
         }
 
@@ -145,7 +145,7 @@ public class Compiler {
             case OT_CHAR:
                 try {
                     int ch = (int) memoryBlocks[memoryPointer];
-                    bw.write((int) ch + "");
+                    bw.write((int) ch + " ");
                     codePointer++;
                 } catch (Exception e) {
                     System.out.println("FAILED TO WRITE TO OUTPUT");

@@ -130,7 +130,8 @@ Code if 16th == 124 (0 2 6 8)!
             Check if 16th got to 0!
             >>[>]>>
             Code if 16th == 124; then we are at 18th position!
-            ?[
+            ?+++++-----
+            [
                 Hooray we found 8; we shall print it
                 - Clean
                 ++
@@ -145,16 +146,17 @@ Code if 16th == 124 (0 2 6 8)!
                 #
             ]
             It wasnt 8; therefore it must be 6
-            ?++++++
+            ++++++
             .
+            ------
             #   
         ]
         It is NOT equivalent to 95; therefore it must be a 0
-        ++++.
+        ++++.----
         #
     ]
     Found 2; we shall print it!
-    ++.
+    ++.--
     #
     *
     *
