@@ -35,6 +35,8 @@ public class Compiler {
         this.fuckedUpCode = fuckedUpCode;
         codePointer = 0;
         running = checkBrackets();
+        if (!running)
+            System.out.println("Failed to run");
         br = new BufferedReader(new InputStreamReader(System.in));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
         compile();
@@ -64,6 +66,7 @@ public class Compiler {
         try {
 
             bw.close();
+            System.out.println();
         } catch (Exception e) {
 
         }
@@ -81,6 +84,12 @@ public class Compiler {
         // Detect the instruction that's going to be processed
         char inst = fuckedUpCode.charAt(codePointer);
         switch (inst) {
+            case '#':
+                running = false;
+                break;
+            case '?':
+                codePointer++;
+                break;
             case '!':
                 codePointer++;
                 break;
@@ -136,7 +145,7 @@ public class Compiler {
             case OT_CHAR:
                 try {
                     int ch = (int) memoryBlocks[memoryPointer];
-                    bw.write((char) ch + "");
+                    bw.write((int) ch + "");
                     codePointer++;
                 } catch (Exception e) {
                     System.out.println("FAILED TO WRITE TO OUTPUT");
