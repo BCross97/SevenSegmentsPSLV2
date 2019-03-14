@@ -101,6 +101,12 @@ public class Compiler {
                 memoryBlocks[memoryPointer]--;
                 break;
             case BGN_LPP:
+                if (memoryBlocks[memoryPointer] == 0) {
+                    while (codePointer < fuckedUpCode.length() && fuckedUpCode.charAt(codePointer) != END_LPP) {
+                        codePointer++;
+                    }
+                    break;
+                }
                 codePointer++;
                 break;
             case END_LPP:

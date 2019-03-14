@@ -14,21 +14,7 @@ public class Controller {
 
     }
 
-    Lectura del numero!
-            >+>+>+>+>+>+>+>+
-            <<<<<<<<
-            [
-            ,>
-            ]
-            [
-    <
-]
-    Tras esto el numero queda escrito en las primeras 9 posiciones!
-            [
-            .>
-            ]
-            #
-            1234567891
+
 
 
     public String readCode() {
