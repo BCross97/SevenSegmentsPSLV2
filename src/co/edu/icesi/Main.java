@@ -9,7 +9,7 @@ public class Main {
         main.runBusiness();
     }
 
-    public void runBusiness(){
+    public void runBusiness() {
         controller = new Controller();
     }
 }

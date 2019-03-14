@@ -55,6 +55,7 @@ public class Compiler {
 
     public void compile() {
         System.out.println("Run started");
+        System.out.println("Now enter the input for your code");
         while (running && codePointer < fuckedUpCode.length()) {
             codePointer = codePointer % memorySize;
             read();
