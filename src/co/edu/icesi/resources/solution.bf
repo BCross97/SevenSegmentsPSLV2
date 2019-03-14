@@ -1,4 +1,5 @@
-Number reading
+*
+SETUP
 +>+>+>+>+>+>+>+>+
 <<<<<<<<
 [
@@ -7,159 +8,218 @@ Number reading
 [
     <
 ]
-Tras esto el numero queda escrito en las primeras 9 posiciones!
+The previous sets number values in the first 9 positions of the memory
 [
     >
-]
-Compare position 6 == 124
-Move to position 6!
-<<<
-Copy value of 6th to 16th position!
-[
+] Ends in position 9
+*
+SET POSITION = 18 AND SET 18TH VALUE = 1
+>>>>>>>>>
++
+*
+START OF THE PROGRAM
+*
+If memory position 6 == 124 then we can identify 2 6 8 0 as possible
+candidates making the list smaller
+*
+COPY VALUE OF 6TH POSITION TO 16TH POSITION
+<<<<<<<<<<<<
+![
     >>>>>>>>>+>+<<<<<<<<<<-
 ]
->>>>>>>>>
+!>>>>>>>>>
 [
     <<<<<<<<<+>>>>>>>>>-
 ]
-> Set in position 16th
-Set value of 18th to 1 for checking if 6th == 124 (Char numb for |)!
->>+<< 
-<<<<++++++++ 8 in 12th!
+*
+SET ACTUAL POSITION TO 16TH
+>
+*
+SET 14TH SLOT WITH VALUE = 124
+This is made by placing 8 in the 12th slot then 31 in the 13th and finally
+124 in the 14th
+!<<<<++++++++
 [
     >++++<-
-]>- 31 in 13th!
+]
+>-
 [
     >++++<-
 ]> 124 in 14th
-Substract 124 to 16th!
+*
+SUBSTRACT 124 TO 16TH CELL
 [
     >>-<<-
 ]
-Check if 16th got to 0!
->>[>]>>
-Code if 16th == 124 (0 2 6 8)!
+*
+CHECK IF 16TH == 0
+This might leave the marker either in the 18th cell (With value 1) or in
+the 19th cell (with value 0)
+!>>[>]>>
 [
-    Check if position 3 == 124!
-    -
+    If memory position 3 == 124 then we can identify 6 8 0 as possible
+    candidates making the list smaller
+    *
+    COPY VALUE OF 3RD POSITION TO 16TH POSITION
     <<<<<<<<<<<<<<<
-    Copy value of 3rd to 16th position!
-    [
+    ![
         >>>>>>>>>>>>+>+<<<<<<<<<<<<<-
     ]
     >>>>>>>>>>>>
-    [
+    ![
         <<<<<<<<<<<<+>>>>>>>>>>>>-
     ]
-    > Set position back to 16th!
-    Set value of 18th to 1 for checking if 6th == 124 (Char numb for |)
-    >>+<< Set back to position 16th!
-    <<<<++++++++ 8 in 12th!
+    *
+    SET ACTUAL POSITION TO 16TH
+    >
+    *
+    SET 14TH SLOT WITH VALUE = 124
+    This is made by placing 8 in the 12th slot then 31 in the 13th and finally
+    124 in the 14th
+    !<<<<++++++++
     [
         >++++<-
-    ]>- 31 in 13th
-    [
+    ]
+    >-
+    ![
         >++++<-
     ]> 124 in 14th
-    Substract 124 to 16th!
+    *
+    SUBSTRACT 124 TO 16TH CELL
     [
         >>-<<-
     ]
-    Check if 16th got to 0!
-    >>[>]>>
-    if 16th == 124; then we are at 18th position!
+    *
+    CHECK IF 16TH == 0
+    This might leave the marker either in the 18th cell (With value 1) or 
+    in the 19th cell (with value 0)
+    !>>[>]>>
     [
-        Indeed; it IS at the 18th position
-        Remaining candidates are 0 6 and 8 
-        Lets clean it
-        -
-        Check if position 4 equals 95
-        Go to position 4 from 18th
-        !<<<<<<<<<<<<<<
-        Copy 4 to 16
+        If memory position 5 == 124 then we can identify 8 0 as possible
+        candidates making the list smaller
+        *
+        COPY VALUE OF 5TH POSITION TO 16TH POSITION
+        <<<<<<<<<<<<<
         ![
-            >>>>>>>>>>>+>+<<<<<<<<<<<<-
+            >>>>>>>>>>+>+<<<<<<<<<<<-
         ]
-        >>>>>>>>>>>
+        >>>>>>>>>>
         [
-            <<<<<<<<<<<+>>>>>>>>>>>-
-        ]>
-        Set 18th to 1 for validating
-        >>+
-        Set 14th to 95 for validating if 16th == 95
-        !<<<<< Standing at 13th; setting it to 19
-        !+++++ 
-        ![
-            >+++++++++++++++++++<-
-        ]> Standing at 14th with 95 in it
-        Substract 95 to 16th
-        ![
+            <<<<<<<<+>>>>>>>>-
+        ]
+        *
+        SET ACTUAL POSITION TO 16TH
+        >
+        *
+        SET 14TH SLOT WITH VALUE = 124
+        This is made by placing 8 in the 12th slot then 31 in the 13th and finally
+        124 in the 14th
+        !<<<<++++++++
+        [
+            >++++<-
+        ]
+        >-
+        [
+            >++++<-
+        ]> 124 in 14th
+        *
+        SUBSTRACT 124 TO 16TH CELL
+        [
             >>-<<-
         ]
-        Check if 16th == 0
-        !>>[>]>>
+        *
+        CHECK IF 16TH == 0
+        This might leave the marker either in the 18th cell (With value 1) or in
+        the 19th cell (with value 0)
+        >>[>]>>
         [
-            Indeed 16th == 0; Remaining candidates are 6 and 8
-            Lets clean it (We stand in position 18th)
-            !-
-            Now we have to check the 5th position; if it equalls 124 then the answer is 8; if not the answer is 6
-            Check if position 5 == 124!
-            <<<<<<<<<<<<< We now stand in the 5th position
-            Copy value of 5rd to 16th position
+            If memory position 4 == 95 then we can identify 8 as our number or 4 if
+            the condition does not apply
+            *
+            COPY VALUE OF 4TH POSITION TO 16TH POSITION
+            <<<<<<<<<<<<<<
             ![
-                >>>>>>>>>>+>+<<<<<<<<<<<-
+                >>>>>>>>>>>+>+<<<<<<<<<<<<-
             ]
-            !>>>>>>>>>>
-            [
-                <<<<<<<<<<+>>>>>>>>>>-
+            >>>>>>>>>>>
+            ![
+                <<<<<<<<<<<+>>>>>>>>>>>-
             ]
-            > Set position back to 16th!
-            Set value of 18th to 1 for checking if 6th == 124 (Char numb for |)
-            >>+<< Set back to position 16th!
-            <<<<++++++++ 8 in 12th!
+            *
+            SET ACTUAL POSITION TO 16TH
+            >
+            *
+            SET 14TH SLOT WITH VALUE = 95
+            This is made by placing 5 in the 13th slot then 95 in the 14th
+            <<<+++++
             [
-                >++++<-
-            ]>- 31 in 13th
-            [
-                >++++<-
-            ]> 124 in 14th
-            Substract 124 to 16th!
+                >+++++++++++++++++++<-
+            ]> 95 in 14th
+            *
+            SUBSTRACT 95 TO 16TH CELL
             [
                 >>-<<-
             ]
-            Check if 16th got to 0!
-            >>[>]>>
-            Code if 16th == 124; then we are at 18th position!
+            *
+            CHECK IF 16TH == 0
+            This might leave the marker either in the 18th cell (With value 1) or in
+            the 19th cell (with value 0)
+            ?>>[>]>>?
             ?[
-                Hooray we found 8; we shall print it
-                - Clean
+                This validates the necessary conditions for finding the number EIGHT
+                *
+                PRINT NUMBER EIGHT
+                [-]
                 ++
                 [
                     >++<-
-                ]> This is just a fancy and very 
-                unnecessary way of printing 8
+                ]>
                 [
                     >++<-
                 ]>
                 .
+                *
+                END PROGRAM
                 #
             ]
-            It wasnt 8; therefore it must be 6
-            ++++++
+            This validates the necessary conditions for finding the number ZERO
+            *
+            PRINT NUMBER CERO
+            [-]
+            +-
             .
-            ------
-            #   
+            *
+            END PROGRAM
+            #
         ]
-        It is NOT equivalent to 95; therefore it must be a 0
-        ++++.----
+        This validates the necessary conditions for finding the number SIX
+        *
+        PRINT NUMBER SIX
+        [-]
+        !++
+        [
+            >+++<-
+        ]>
+        .
+        *
+        END PROGRAM
         #
     ]
-    Found 2; we shall print it!
-    ++.--
+    This validates the necessary conditions for finding the number TWO
+    *
+    PRINT NUMBER TWO
+    [-]
+    !++
+    [
+        >+<-
+    ]>
+    .
+    *
+    END PROGRAM
     #
-    *
-    *
-    *
-    # To make sure the program exits (# is the symbol I defined for exiting the program
 ]
 #
+Number reading
+     _  _       _   _  _   _   _   _ 
+  |  _| _| |_| |_  |_   | |_| |_| | |
+  | |_  _|   |  _| |_|  | |_|   | |_|
