@@ -14,6 +14,23 @@ public class Controller {
 
     }
 
+    Lectura del numero!
+            >+>+>+>+>+>+>+>+
+            <<<<<<<<
+            [
+            ,>
+            ]
+            [
+    <
+]
+    Tras esto el numero queda escrito en las primeras 9 posiciones!
+            [
+            .>
+            ]
+            #
+            1234567891
+
+
     public String readCode() {
         System.out.println("Write the brainfuck code!!\nWrite a line beggining with # for changing to file input\n");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

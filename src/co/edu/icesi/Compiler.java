@@ -60,6 +60,7 @@ public class Compiler {
             codePointer = codePointer % memorySize;
             read();
         }
+
         try {
 
             bw.close();
@@ -80,13 +81,16 @@ public class Compiler {
         // Detect the instruction that's going to be processed
         char inst = fuckedUpCode.charAt(codePointer);
         switch (inst) {
+            case '!':
+                codePointer++;
+                break;
             case INC_PTR:
                 codePointer++;
-                memoryPointer++;
+                memoryPointer = (memoryPointer + 1) % memoryBlocks.length;
                 break;
             case DEC_PTR:
                 codePointer++;
-                memoryPointer--;
+                memoryPointer = (memoryPointer - 1) == -1 ? memoryBlocks.length - 1 : memoryPointer - 1;
                 break;
             case INC_VAL:
                 codePointer++;
