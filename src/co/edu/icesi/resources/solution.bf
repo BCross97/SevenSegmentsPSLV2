@@ -1,4 +1,4 @@
-Lectura del numero
+Number reading
 +>+>+>+>+>+>+>+>+
 <<<<<<<<
 [
@@ -9,7 +9,7 @@ Lectura del numero
 ]
 Tras esto el numero queda escrito en las primeras 9 posiciones!
 [
-    .>
+    >
 ]
 Compare position 6 == 124
 Move to position 6!
@@ -130,8 +130,7 @@ Code if 16th == 124 (0 2 6 8)!
             Check if 16th got to 0!
             >>[>]>>
             Code if 16th == 124; then we are at 18th position!
-            ?+++++-----
-            [
+            ?[
                 Hooray we found 8; we shall print it
                 - Clean
                 ++

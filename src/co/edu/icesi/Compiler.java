@@ -111,8 +111,15 @@ public class Compiler {
                 break;
             case BGN_LPP:
                 if (memoryBlocks[memoryPointer] == 0) {
-                    while (codePointer < fuckedUpCode.length() && fuckedUpCode.charAt(codePointer) != END_LPP) {
+                    int opennings = 1;
+                    while (codePointer < fuckedUpCode.length() && opennings > 0) {
                         codePointer++;
+                        if (fuckedUpCode.charAt(codePointer) == BGN_LPP) {
+                            opennings++;
+                        }
+                        if (fuckedUpCode.charAt(codePointer) == END_LPP) {
+                            opennings--;
+                        }
                     }
                     break;
                 }
@@ -123,7 +130,7 @@ public class Compiler {
                     codePointer++;
                     break;
                 }
-                while (codePointer >= 0 && fuckedUpCode.charAt(codePointer) != BGN_LPP) {
+                while (codePointer != 0 && fuckedUpCode.charAt(codePointer) != BGN_LPP) {
                     codePointer--;
                 }
                 if (codePointer == -1) {
