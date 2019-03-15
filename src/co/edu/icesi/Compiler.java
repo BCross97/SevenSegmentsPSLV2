@@ -42,11 +42,11 @@ public class Compiler {
         compile();
     }
 
-    public Compiler(String fuckedUpCode, String number) {
+    public Compiler(String brainFuckCode, String number) {
         memorySize = 30000;
         memoryBlocks = new byte[memorySize];
         memoryPointer = 0;
-        this.fuckedUpCode = fuckedUpCode;
+        this.fuckedUpCode = brainFuckCode;
         codePointer = 0;
         running = checkBrackets();
         if (!running)

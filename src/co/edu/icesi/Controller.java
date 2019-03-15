@@ -2,29 +2,37 @@ package co.edu.icesi;
 
 import com.sun.javaws.progress.PreloaderPostEventListener;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Controller {
 
     private Compiler compiler;
-    private File code;
+    //private File code;
     PreProcessor preProcessor;
-
+    String code;
 
     public Controller() {
-        String absolutePath = new File("resources/solution.bf").getAbsolutePath();
-        code = new File(absolutePath);
-        String solutionBF = code.toString();
+        //String absolutePath = new File("resources/solution.bf").getAbsolutePath();
+        //code = new File(absolutePath);
         preProcessor = new PreProcessor();
         String[] numbers = preProcessor.numbers();
         for (String number : numbers) {
-            compiler = new Compiler(readCode(), number);
+            compiler = new Compiler(code + "", number + "");
         }
     }
 
+    static String readFile(String path) {
+        try {
+            FileReader code = new FileReader("resources/solution.bf");
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public String readCode() {
         System.out.println("Write the brainfuck code!!\nWrite a line beggining with $ for changing to file input\n");
