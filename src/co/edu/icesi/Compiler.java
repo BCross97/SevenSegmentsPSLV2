@@ -54,7 +54,7 @@ public class Compiler {
         br = new BufferedReader(new StringReader(number));
         sw = new StringWriter();
         bw = new BufferedWriter(sw);
-        //compile();
+        compile();
     }
 
     public boolean checkBrackets() {

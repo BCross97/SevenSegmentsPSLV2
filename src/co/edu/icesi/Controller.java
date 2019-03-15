@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -15,10 +16,11 @@ public class Controller {
     String code;
 
     public Controller() {
-        //String absolutePath = new File("resources/solution.bf").getAbsolutePath();
+        String absolutePath = new File("src/resources/solution.bf").getAbsolutePath();
         //code = new File(absolutePath);
         preProcessor = new PreProcessor();
-        String[] numbers = preProcessor.numbers();
+        ArrayList<String> numbers = preProcessor.numbers();
+        code = readFile(absolutePath);
         for (String number : numbers) {
             compiler = new Compiler(code + "", number + "");
         }
@@ -26,7 +28,7 @@ public class Controller {
 
     static String readFile(String path) {
         try {
-            FileReader code = new FileReader("resources/solution.bf");
+            FileReader code = new FileReader(path);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

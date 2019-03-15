@@ -3,43 +3,43 @@ package co.edu.icesi;
 import jdk.nashorn.internal.objects.NativeArray;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.util.ArrayList;
 
 public class PreProcessor {
 
-    public String[] numbers() {
-        String[] numbers = null;
+    public ArrayList<String> numbers() {
+        ArrayList<String> numbers = new ArrayList<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        return getStrings(numbers, br);
-    }
-
-    private String[] getStrings(String[] numbers, BufferedReader br) {
+        String[] readings = new String[3];
         try {
-            String line = br.readLine();
-            while (line != null || !line.equals("")) {
+            readings[0] = br.readLine();
+            readings[1] = br.readLine();
+            readings[2] = br.readLine();
 
-                int n = line.length() / 4;
-                numbers = new String[n];
-                for (int s = 0; s < n; s++) {
-                    int a = s * 4;
-                    int b = (s + 1) * 4;
-                    numbers[s] += line.substring(a, b);
-                    line = br.readLine();
-                }
+            for (int i = 0; i < readings[0].length(); i += 4) {
+                if(i >= 24)
+                    numbers = numbers;
 
+                String top = readings[0].substring(i, i + 3);
+                String mid = readings[1].substring(i, i + 3);
+                String bot = readings[2].substring(i, i + 3);
+                numbers.add(top + mid + bot);
             }
-        } catch (Exception e) {
 
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        for(String numb : numbers){
+            System.out.println(numb);
+            System.out.println();
+        }
+
         return numbers;
     }
 
-    public String[] numbers(String input) {
-        String[] numbers = null;
-        BufferedReader br = new BufferedReader(new StringReader(input));
-
-        return getStrings(numbers, br);
-    }
 }
