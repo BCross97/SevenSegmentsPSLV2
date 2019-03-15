@@ -33,11 +33,6 @@ public class PreProcessor {
             e.printStackTrace();
         }
 
-        for(String numb : numbers){
-            System.out.println(numb);
-            System.out.println();
-        }
-
         return numbers;
     }
 
