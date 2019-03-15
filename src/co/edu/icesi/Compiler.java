@@ -1,9 +1,6 @@
 package co.edu.icesi;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.*;
 
 public class Compiler {
 
@@ -27,7 +24,10 @@ public class Compiler {
     private boolean running;
     private BufferedReader br;
     private BufferedWriter bw;
+    private StringWriter sw;
+    private String numberResult;
 
+    @Deprecated
     public Compiler(String fuckedUpCode) {
         memorySize = 30000;
         memoryBlocks = new byte[memorySize];
@@ -40,6 +40,21 @@ public class Compiler {
         br = new BufferedReader(new InputStreamReader(System.in));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
         compile();
+    }
+
+    public Compiler(String fuckedUpCode, String number) {
+        memorySize = 30000;
+        memoryBlocks = new byte[memorySize];
+        memoryPointer = 0;
+        this.fuckedUpCode = fuckedUpCode;
+        codePointer = 0;
+        running = checkBrackets();
+        if (!running)
+            System.out.println("Failed to run");
+        br = new BufferedReader(new StringReader(number));
+        sw = new StringWriter();
+        bw = new BufferedWriter(sw);
+        //compile();
     }
 
     public boolean checkBrackets() {
@@ -55,22 +70,23 @@ public class Compiler {
         return n == 0;
     }
 
-    public void compile() {
+    public String compile() {
         System.out.println("Run started");
-        System.out.println("Now enter the input for your code");
+        // System.out.println("Now enter the input for your code");
         while (running && codePointer < fuckedUpCode.length()) {
             memoryPointer = memoryPointer % memorySize;
             read();
         }
-
         try {
-
+            bw.flush();
+            String genNumber = sw.toString();
             bw.close();
             System.out.println();
+            return genNumber;
         } catch (Exception e) {
-
         }
-        System.out.println("Run ended");
+        return "";
+        // System.out.println("Run ended");
     }
 
     public void read() {
