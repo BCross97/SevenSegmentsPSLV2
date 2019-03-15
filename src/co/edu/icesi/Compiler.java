@@ -54,7 +54,7 @@ public class Compiler {
         br = new BufferedReader(new StringReader(number));
         sw = new StringWriter();
         bw = new BufferedWriter(sw);
-        compile();
+        //compile();
     }
 
     public boolean checkBrackets() {
@@ -72,7 +72,6 @@ public class Compiler {
 
     public String compile() {
         System.out.println("Run started");
-        // System.out.println("Now enter the input for your code");
         while (running && codePointer < fuckedUpCode.length()) {
             memoryPointer = memoryPointer % memorySize;
             read();
@@ -84,6 +83,7 @@ public class Compiler {
             System.out.println();
             return genNumber;
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return "";
         // System.out.println("Run ended");
